@@ -1,17 +1,24 @@
 # MultiEFM <a href='https://RRuihan-Zhang.github.io/MultiEFM/'><img src='docs/link.svg' align="right" height="30" /></a>
 
-## Overview
-**MultiEFM** (Multi-study Efficient Factor Model) 是一个专门用于处理多研究/多批次数据的统计分析工具包。本项目通过高效的因子模型实现多维数据的整合与特征提取。
+**MultiEFM** (Multi-study Elliptical Factor Model) is a robust statistical framework and R package designed for multi-study factor analysis. 
 
-本项目是我的学士学位论文（或研究课题）的核心代码实现，结合了 C++ (Rcpp) 加速，旨在提供稳定且高效的统计计算支持。
+## 📖 Overview
+Identifying study-shared and study-specific latent structures is central to multi-study factor analysis. However, existing methods heavily rely on Gaussian or finite second-moment assumptions, making them vulnerable to heavy-tailed distributions and outliers frequently encountered in modern applications like single-cell genomics.
 
-## 🌐 完整文档与教程
-为了更直观地查看详细的模拟实验（Simulation）结果和函数说明，请访问本项目自动生成的官方展示网页：
-👉 **[https://RRuihan-Zhang.github.io/MultiEFM/](https://RRuihan-Zhang.github.io/MultiEFM/)**
+**MultiEFM** addresses this limitation by operating under an elliptical factor model that does not require finite second moments. By leveraging geometric decoupling between radial and directional components, it constructs rank-based estimators via Kendall’s tau scatter matrices. 
 
-## 🚀 快速安装
-您可以在 R 环境中通过 `devtools` 直接从 GitHub 安装本工具包：
+## ✨ Key Features
+* **Distribution-Free Robustness:** Achieves consistent estimation without moment conditions, making it highly resistant to heavy-tailed contamination.
+* **Decoupled Estimation:** Recovers shared factor spaces through cross-study aggregation, while extracting study-specific factors via residual-based normalization.
+* **Robust Factor Scores:** Utilizes a Huber-type estimator for reliable factor score computation.
+* **Consistent Dimension Selection:** Introduces a frequency-based stability operator to accurately determine the number of latent factors.
+* **High Performance:** Demonstrates superior statistical and computational efficiency compared to state-of-the-art methods.
+* **Biological Interpretability:** Effectively separates biologically meaningful shared structures from condition- or platform-specific batch effects in single-cell RNA sequencing (scRNA-seq) datasets.
 
-```R
-# 如果尚未安装 devtools，请先运行: install.packages("devtools")
+## 🚀 Installation
+
+You can install the development version of MultiEFM from [GitHub](https://github.com/) with:
+
+```r
+# If you haven't installed devtools yet, please run: install.packages("devtools")
 devtools::install_github("RRuihan-Zhang/MultiEFM")
