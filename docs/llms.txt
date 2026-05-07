@@ -1,0 +1,25 @@
+We introduce a high-dimensional multi-study elliptical factor model
+(MultiEFM), which learns latent features and accounts for the
+heterogeneity among sources. It provides robust estimation for
+heterogeneous high-dimensional data analysis, particularly suitable for
+multi-study RNA sequencing data and spatial multi-omics. The package
+implements efficient algorithms for model configuration, identifiability
+conditions, and parameter estimation.
+
+# Package index
+
+## All functions
+
+- [`gendata_simu_robust()`](gendata_simu_robust.md) : Generate Simulated
+  Data for Robust Multi-Study Elliptical Factor Model
+- [`MultiEFM()`](MultiEFM.md) : Fit the high-dimensional multi-study
+  elliptical factor model
+- [`selectFac.MultiEFM()`](selectFac.MultiEFM.md) : Select the number of
+  factors for MultiEFM
+
+# Articles
+
+### All vignettes
+
+- [High Dimensional Example of MultiEFM](simu_high_dim.md):
+- [Low Dimensional Example of MultiEFM](simu_low_dim.md):

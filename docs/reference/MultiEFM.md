@@ -1,0 +1,113 @@
+# Fit the high-dimensional multi-study elliptical factor model
+
+Fit the high-dimensional multi-study elliptical factor model which
+learns latent features and accounts for the heterogeneity among sources.
+
+## Usage
+
+``` r
+MultiEFM(
+  XList,
+  q,
+  qs_vec,
+  loads_method = c("Residual", "Ortho"),
+  fac_est_method = c("Huber", "LS"),
+  n_threads = 4,
+  sample_pairs = 0,
+  epsObj = 1e-06,
+  maxIter = 20,
+  verbose = TRUE,
+  seed = 1
+)
+```
+
+## Arguments
+
+- XList:
+
+  A length-S list, where each component represents a data matrix for a
+  specific study.
+
+- q:
+
+  an integer, specify the number of study-shared factors.
+
+- qs_vec:
+
+  an integer vector with length S, specify the number of study-specified
+  factors for each study.
+
+- loads_method:
+
+  a character string specifying the method for loading estimation.
+  Options are "Residual" or "Ortho".
+
+- fac_est_method:
+
+  a character string specifying the method for factor estimation.
+  Options are "Huber" or "LS" (Least Squares).
+
+- n_threads:
+
+  an integer, specify the number of threads for parallel computing;
+  default as 4.
+
+- sample_pairs:
+
+  an integer, specify the number of sample pairs used for estimation;
+  default as 0.
+
+- epsObj:
+
+  a positive value, tolerance for convergence, default as 1e-6.
+
+- maxIter:
+
+  the maximum iteration of the algorithm. The default is 20.
+
+- verbose:
+
+  a logical value, whether to output the information in iteration.
+
+- seed:
+
+  an integer, specify the random seed for reproducibility in
+  initialization; default as 1.
+
+## Value
+
+return a list including the following components:
+
+- A:
+
+  the estimated loading matrix corresponding to study-shared factors;
+
+- F:
+
+  a list composed by the estimation of study-shared factor matrix for
+  each study;
+
+- B:
+
+  a list composed by the loading matrices corresponding to the
+  study-specified factors;
+
+- H:
+
+  a list composed by the estimation of study-specified factor matrix for
+  each study.
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+p <- 100
+nvec <- c(150, 200)
+qs <- c(2, 2)
+datList <- gendata_simu_robust(seed=1, nvec=nvec, p=p, q=3, qs=qs, rho=c(5,5),
+                               err.type='mvt', sigma2_eps = 1, nu=3)
+XList <- datList$Xlist
+res <- MultiEFM(XList, q=3, qs_vec=qs)
+str(res)
+} # }
+```

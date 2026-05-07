@@ -1,0 +1,7 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^simuCodes$
+^\.RDataTmp$
+^_pkgdown\.yml$
+^docs$
+^git$
